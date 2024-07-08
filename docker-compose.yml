@@ -1,6 +1,7 @@
 # File: docker-compose.yml
 # Author: Marc Bria UAB (marc.bria@uab.es)
 
+
 services:
   db:
     image: mariadb:10.2
@@ -46,10 +47,13 @@ services:
 
     networks:
       - inside
+      - proxy
     depends_on:
       - db
     restart: always
 
- networks:
+networks:
   inside:
     external: false
+  proxy:
+    external: true
