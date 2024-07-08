@@ -47,7 +47,7 @@ services:
 
     networks:
       - inside
-      - proxy
+      
     depends_on:
       - db
     restart: always
@@ -55,5 +55,3 @@ services:
 networks:
   inside:
     external: false
-  proxy:
-    external: true
