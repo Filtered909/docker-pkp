@@ -22,7 +22,7 @@ services:
     restart: always
 
   app:
-    image: local/${PKP_TOOL}:3_3_0-16
+    image: local/${PKP_TOOL}:3_4_0-5
     build: 
       context: .
       dockerfile: Dockerfile
@@ -36,11 +36,11 @@ services:
     volumes:
       # Keep host and container sync:
       - /etc/localtime:/etc/localtime
-#      - ./volumes/private:/var/www/files
-#      - ./volumes/public:/var/www/html/public
-#      - ./volumes/logs/app:/var/log/apache2
+      - ./volumes/private:/var/www/files
+      - ./volumes/public:/var/www/html/public
+      - ./volumes/logs/app:/var/log/apache2
 #      # WARNING: You can only enable file-volumes if file exists in the container.
-#      - ./volumes/config/ojs.config.inc.php:/var/www/html/config.inc.php
+      - ./volumes/config/ojs.config.inc.php:/var/www/html/config.inc.php
       - ./volumes/config/apache.htaccess:/var/www/html/.htaccess
       - ./volumes/config/php.custom.ini:/usr/local/etc/php/conf.d/custom.ini
 
@@ -52,4 +52,4 @@ services:
 
 networks:
   inside:
-    external: false
+    external: true
